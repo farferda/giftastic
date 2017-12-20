@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Favorite animals</title>
+    <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+    
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <p>Animal Generator</p>
+        <div id="animals-view"></div>
+      </div>
+    <div class="row">
+      <div class="col-md-8">
+        
+      </div>
+      <div class="col-md-4">
+        <form id="movie-form">
+          <label for="movie-input">Which Animal are you looking for?</label>
+          <input type="text" id="movie-input"><br>
+          <!-- Button triggers new movie to be added -->
+          <input id="add-movie" type="submit" value="Search!">
+        </form>
+      </div>
+  </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        // Initial array of animals
+        var animals = [];
+        // Function for displaying movie data
+        function renderButtons() {
+        // Deleting the movie buttons prior to adding new movie buttons
+        // (this is necessary otherwise we will have repeat buttons)
+        $("#animals-view").empty();
+        // Looping through the array of animals
+        for (var i = 0; i < animals.length; i++) {
+        
+        var a = $("<button>");
+        
+        a.attr("data-name", animals[i]);
+        a.text(animals[i]);
+        $("#animals-view").append(a);
+        }
+        }
+        $("#add-movie").on("click", function(event) {
+        
+        event.preventDefault();
+        var movie = $("#movie-input").val().trim();
+        animals.push(movie);
+        
+        renderButtons();
+        });
+        renderButtons();
+        </script>
+      </div>
+    </body>
+  </html>
